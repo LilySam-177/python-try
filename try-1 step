@@ -1,0 +1,13 @@
+#列表推导式   变量1 = [变量的处理 for i in 容器型数据 if 条件判断表达式]
+new = [(x,y) for x in [1,2,3] for y in [3,1,4] if x != y]
+# [(1,3),(1,4),(2,3),(2,1),(2,4),(3,1),(3,4)]
+
+
+
+# 字典中键和值的取值
+a = {'user':'admin','age':20,'phone':"133"}
+for k,v in a.items():
+    print(k,v)
+# user admin
+# age 20
+# phone 133
