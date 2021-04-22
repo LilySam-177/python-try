@@ -27,3 +27,27 @@ for k,v in a.items():
 # user admin
 # age 20
 # phone 133
+
+
+
+#others
+# opencv 最常用的图像处理类库
+import cv2
+# 用作jupyter展示图片用
+from PIL import Image 
+# 提前准备好的图像路径
+image_path = '/data/course_data/AI/模块课-目标检测/jinmao1.jpg'
+# 提前准备好的框坐标，惯例顺序为xmin ymin xmax ymax
+coordinate = [52, 9, 213, 248]
+# 为了方便大家看，拆出来4个变量
+x_min, y_min, x_max, y_max = coordinate
+# 将磁盘中的图像数据读取进来
+img = cv2.imread(image_path)
+# 画矩形，在opencv画矩形的api中，传入的是左上角以及右下角的坐标，后面的参数是框的颜色及粗细
+img = cv2.rectangle(img, (x_min, y_min), (x_max, y_max), (0,0,255), 2)
+# 转换成可以再jupyter中展示的格式并展示图片
+display(Image.fromarray(cv2.cvtColor(img,cv2.COLOR_BGR2RGB)) )
+# 转换成可以再jupyter中展示的格式并展示图片
+display(Image.fromarray(cv2.cvtColor(img,cv2.COLOR_BGR2RGB)) )
+
+#结果在一个狗狗图片出做出了框图
