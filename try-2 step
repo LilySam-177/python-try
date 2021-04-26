@@ -1,0 +1,78 @@
+#注册用户&登录
+
+
+userlist = []
+pwdlist = []
+
+with open('E:/user.txt','a+',encoding='utf-8') as excel:
+    excel.seek(0)
+    res = excel.readlines()
+    for i in res:
+        r = i.strip()
+        arr = r.split(':')
+        userlist.append(arr[0])
+        pwdlist.append(arr[1])
+
+def register():
+    site = True
+    while site:
+        username = input('输入用户名')
+        if username in userlist:
+            print('更换名字')
+        else:
+            while True:
+                pwd = input('密码1')
+                if len(pwd) >=3:
+                    repwd = input('密码*2')
+                    if pwd == repwd:
+                        with open('E:/user.txt','a+',encoding='utf-8') as excel:
+                            excel.write(f'{username}:{pwd}\n')
+                        print('注册成功')
+                        site = False
+                        break
+                    else:
+                        print('密码不一致')
+                else:
+                    print('长度不够')
+
+
+def denglu():
+
+    while True:
+        name = input('输入用户名：')
+
+        m = 3
+        if name in userlist:
+            while True:
+                if m > 0:
+                    pwd = input('输入密码：')
+                    with open('E:/user.txt', 'r+', encoding='utf-8') as excel:
+                        r = excel.readlines()
+                        for i in res:
+                            r = i.strip()
+                            arr = r.split(':')
+                            if name == arr[0]:
+                                if pwd == arr[1]:
+                                    print(f'用户名：{name}登录成功')
+                                    break
+                                else:
+                                    print(f'密码错误，还有{m}次机会')
+                                    m -= 1
+
+
+                            else:
+                                break
+                else:
+                    print('用户锁定')
+                    break
+#差一个用户锁定的判断
+        else:
+            print('用户名不存在')
+
+
+
+choose = input('1.登录\n2.注册')
+if int(choose) == 1:
+    denglu()
+else:
+    register()
