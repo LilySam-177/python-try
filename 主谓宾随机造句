@@ -1,0 +1,30 @@
+# 主谓宾随机造句
+# import random
+#
+# grammar = """
+# 句子 = 主 谓 宾
+# 主 = 你 | 我 | 他
+# 谓 = 吃 | 喝 | 玩
+# 宾 = 皮球 | 桃子 | 果汁
+# """
+# def get_grammer(gstring):
+#     grammar_gen = dict()
+#     for line in gstring.split('\n'):
+#         if not line.strip(): continue
+#         #print(line)
+#
+#         stmt,expr = line.split('=')
+#         #print('参数aa',stmt,expr)
+#         expressions = expr.split('|')
+#        # print('参数bb',expressions)
+#         grammar_gen[stmt.strip()] = [e.strip() for e in expressions]
+#     #print(grammar_gen)
+#     return grammar_gen
+#
+# def sentence(gram, target='句子'):
+#     if target not in gram:
+#         return target
+#     exp = random.choice(gram[target])
+#     return ''.join([sentence(gram,e) for e in exp.split()])
+#
+# print(sentence(get_grammer(grammar)))
