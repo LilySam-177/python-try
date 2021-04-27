@@ -1,0 +1,51 @@
+
+# 切分木头买卖问题
+#
+# from collections import defaultdict   #defaultdict 函数，值不存在时给一个默认值
+# prices = [1,5,8,9,10,17,17,20,24,30,33]
+# complete_price = defaultdict(int)
+# for i,p in enumerate(prices):
+#     complete_price [i + 1] = p
+# # print(complete_price[10],i,p)
+# def r(n):
+#     # candidate = [complete_price[n]]
+#     # for i in range(1,n):
+#     #     left = i
+#     #     right = n - i
+#     #     total_r = r(left) + r(right)
+#     #     candidate.append(total_r)#变成递归问题
+#     # return max(candidate)
+#     return max([complete_price[n]]+[r(i) + r(n-i) for i in range(1,n)])   #此句可替代上面7句
+# if __name__ =='__main__':
+#     print(r(8))
+
+
+# 法二
+#
+from collections import defaultdict   #defaultdict 函数，值不存在时给一个默认值
+prices = [1,5,8,9,10,17,17,20,24,30,33]
+complete_price = defaultdict(int)
+for i,p in enumerate(prices):
+    complete_price [i + 1] = p
+# print(complete_price[10],i,p)
+solution = {}
+cache = {}
+
+def r(n):
+    if n in cache : return cache[n]  #解决重复计算
+    candidat = [(complete_price[n],(n,0))] + [(r(i) + r(n-i),(i, n-i)) for i in range(1,n)]  #  +号在此的意思是把后面的加进数据集去
+    optimal_price, split = max(candidat)
+    solution[n] = split
+    cache[n] = optimal_price #解决重复计算
+    return optimal_price
+
+def path_solution(n,cut_solution):
+    left , right = cut_solution[n]
+    if left == 0 or right == 0 : return[left+right,]
+    else:
+        return path_solution(left,cut_solution) + path_solution(right,cut_solution)
+
+
+if __name__ =='__main__':
+    print(r(39))
+    print(path_solution(39 , solution))
