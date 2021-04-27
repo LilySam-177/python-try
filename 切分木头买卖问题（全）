@@ -1,5 +1,6 @@
 
 # 切分木头买卖问题
+#经典动态规划问题
 #
 # from collections import defaultdict   #defaultdict 函数，值不存在时给一个默认值
 # prices = [1,5,8,9,10,17,17,20,24,30,33]
