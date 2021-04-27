@@ -1,0 +1,15 @@
+
+tqdm可生成进度条
+在Windows下cmd打开命令窗口，通过命令安装tqdm
+pip install tqdm
+
+
+
+
+
+
+#设置一个10分钟定时器
+# from tqdm import tqdm  #进度条
+# import time
+# for i in tqdm(range(60*10)):
+#     time.sleep(1)  #进度条每一秒前进一次，总时间1*60*10
